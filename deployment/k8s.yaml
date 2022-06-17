@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app
+  name: echo
 spec:
   replicas: 1
   # revisionHistoryLimit: 3
@@ -14,7 +14,7 @@ spec:
         app: echo
     spec:
       containers:
-      - image: gcr.io/heptio-images/ks-guestbook-demo:0.2
+      - image: echo:1.0.0
         name: echo-app
         ports:
         - containerPort: 3000
@@ -34,12 +34,12 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: app-url
+  name: echo-url
 spec:
   rules:
   - http:
       paths:
-      - path: /app
+      - path: /echo
         pathType: Prefix
         backend:
           service:
