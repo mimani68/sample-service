@@ -1,48 +1,48 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: echo
+  name: server
 spec:
   replicas: 1
   # revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: echo
+      app: server
   template:
     metadata:
       labels:
-        app: echo
+        app: server
     spec:
       containers:
-      - image: echo:1.0.0
-        name: echo-app
+      - image: server:1.0.0
+        name: server-app
         ports:
         - containerPort: 3000
 ----
 apiVersion: v1
 kind: Service
 metadata:
-  name: echo-srv
+  name: server-srv
 spec:
   ports:
   - port: 80
     targetPort: 3000
   selector:
-    app: echo
+    app: server
 ----
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: echo-url
+  name: server-url
 spec:
   rules:
   - http:
       paths:
-      - path: /echo
+      - path: /server
         pathType: Prefix
         backend:
           service:
-            name: echo-srv
+            name: server-srv
             port:
               number: 80
