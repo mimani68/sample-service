@@ -43,14 +43,18 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      # - name: Set outputs
+      #   id: vars
+      #   run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+
       - name: Build and push latest
         uses: docker/build-push-action@v3
         with:
           push: true
           tags: mimani/sample-server:latest
 
-      - name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: mimani/sample-server:$(git rev-parse --short "$GITHUB_SHA")
+      # - name: Build and push
+      #   uses: docker/build-push-action@v3
+      #   with:
+      #     push: true
+      #     tags: mimani/sample-server:${{ steps.vars.outputs.sha_short }}
