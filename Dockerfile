@@ -9,7 +9,7 @@ ENV GO111MODULE=on \
 
 WORKDIR /app
 
-RUN apt update && apt install git
+RUN apt update && apt install -y git
 
 # First add modules list to better utilize caching
 COPY go.sum go.mod /app/
@@ -45,7 +45,7 @@ RUN mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
 WORKDIR /app
 
 COPY --from=build /app/build/app /app/
-COPY --from=build /app/logs /app/logs
+# COPY --from=build /app/logs /app/logs
 COPY --from=build /app/VERSION /app/VERSION
 
 EXPOSE 3000
