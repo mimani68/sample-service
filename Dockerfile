@@ -9,7 +9,8 @@ ENV GO111MODULE=on \
 
 WORKDIR /app
 
-RUN apt update && apt install -y git
+RUN apt update
+# RUN apt update && apt install -y git
 
 # First add modules list to better utilize caching
 COPY go.sum go.mod /app/
@@ -19,7 +20,7 @@ RUN go mod download
 
 # Adding sourc eof project
 COPY . /app
-RUN git rev-parse --short HEAD > /app/VERSION
+# RUN git rev-parse --short HEAD > /app/VERSION
 
 # Build components.
 # Put built binaries and runtime resources in /app dir ready to be copied over or used.
@@ -46,7 +47,7 @@ WORKDIR /app
 
 COPY --from=build /app/build/app /app/
 # COPY --from=build /app/logs /app/logs
-COPY --from=build /app/VERSION /app/VERSION
+# COPY --from=build /app/VERSION /app/VERSION
 
 EXPOSE 3000
 
