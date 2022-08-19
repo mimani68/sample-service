@@ -5,10 +5,13 @@ import (
 	"net/http"
 	"os"
 
+	"app.io/server/pkg/logger"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
+
+	logger.Log("Server is about to start")
 	logger := log.New(os.Stderr, "", 0)
 
 	r := gin.Default()

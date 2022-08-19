@@ -1,4 +1,4 @@
-module app.io/echo
+module app.io/server
 
 go 1.18
 
