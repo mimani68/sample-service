@@ -43,13 +43,13 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: ls directory
-        id: vars_ls
-        run: echo "::set-output name=sha_short::$(pwd; ls)"
+      # - name: ls directory
+      #   id: vars_ls
+      #   run: echo "::set-output name=sha_short::$(pwd; ls)"
 
-      - name: Define custom tag
-        id: Short
-        run: echo "::set-output name=sha_short::$(cd sample-service; git rev-parse --short HEAD)"
+      # - name: Define custom tag
+      #   id: Short
+      #   run: echo "::set-output name=sha_short::$(cd sample-service; git rev-parse --short HEAD)"
       
       - name: Build and push latest
         uses: docker/build-push-action@v3
