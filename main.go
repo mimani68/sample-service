@@ -16,7 +16,8 @@ func main() {
 
 	r := gin.Default()
 
-	r.GET("/", func(c *gin.Context) {
+	// r.GET("/*", func(c *gin.Context) {
+	r.NoRoute(func(c *gin.Context) {
 		logger.Println("Someone call echo page")
 		c.JSON(http.StatusOK, gin.H{
 			"message": "hello",
