@@ -43,6 +43,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: ls directory
+        id: vars_ls
+        run: echo "::set-output name=sha_short::$(pwd; ls)"
+
       - name: Define custom tag
         id: vars
         run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
