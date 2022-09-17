@@ -48,13 +48,9 @@ jobs:
         run: echo "::set-output name=sha_short::$(pwd; ls)"
 
       - name: Define custom tag
-        id: vars
-        run: echo "::set-output name=sha_short::$(cd sample-server; git rev-parse --short HEAD)"
+        id: Short
+        run: echo "::set-output name=sha_short::$(cd sample-service; git rev-parse --short HEAD)"
       
-      - name: Get Short SHA
-        id: sha_short
-        run: echo ::set-output name=sha_short::$(git rev-parse --short=6 ${{ github.sha }})
-
       - name: Build and push latest
         uses: docker/build-push-action@v3
         with:
