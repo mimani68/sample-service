@@ -49,7 +49,7 @@ jobs:
 
       - name: Define custom tag
         id: vars
-        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+        run: echo "::set-output name=sha_short::$(cd sample-server; git rev-parse --short HEAD)"
       
       - name: Get Short SHA
         id: sha_short
