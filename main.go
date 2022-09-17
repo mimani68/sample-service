@@ -21,7 +21,7 @@ func main() {
 		logger.Println("Someone call echo page")
 		c.JSON(http.StatusOK, gin.H{
 			"message": "Hello dear users",
-			"version": "1.0.5-rc",
+			"version": "1.0.5-rc2",
 		})
 	})
 
