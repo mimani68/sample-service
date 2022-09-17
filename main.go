@@ -20,8 +20,8 @@ func main() {
 	r.NoRoute(func(c *gin.Context) {
 		logger.Println("Someone call echo page")
 		c.JSON(http.StatusOK, gin.H{
-			"message": "hello",
-			"version": "1.0.4",
+			"message": "Hello dear users",
+			"version": "1.0.5-rc",
 		})
 	})
 
