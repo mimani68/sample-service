@@ -51,7 +51,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags:  mimani/sample-server:${{ steps.vars.outputs }}, mimani/sample-server:latest
+          tags:  mimani/sample-server:${{ steps.vars.outputs.sha_short }}, mimani/sample-server:latest
           # tags: ${{ secrets.DOCKER_HUB_USERNAME }}/myapp:${{ steps.vars.outputs.tag }} , ${{ secrets.DOCKER_HUB_USERNAME }}/myapp:latest
 
 
