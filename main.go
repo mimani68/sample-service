@@ -11,7 +11,7 @@ import (
 
 func main() {
 
-	logger.Log("The server is about to start")
+	logger.Log("The server is about to start ...")
 	logger := log.New(os.Stderr, "", 0)
 
 	r := gin.Default()
